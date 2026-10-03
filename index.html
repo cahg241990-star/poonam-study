@@ -6,6 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a5349">
 <meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>Poonam Study</title>
 <style>
 :root{--g:#0a5349;--g2:#0f7a6d;--g3:#d6e8e2;--bg:#f4f8f6;--card:#fff;--ink:#122e2a;--mute:#5b706b;--or:#d9822b;--or2:#fdf1e3;--red:#c0392b;--red2:#fdecea;--ok:#1e8449;--ok2:#e7f6ec;--line:#cdd6d1}
@@ -428,6 +431,7 @@ function resultLine(p, qList, name) {
 
 history.replaceState(state, "");
 render();
+try { if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js"); } catch (e) {}
 </script>
 </body>
 </html>

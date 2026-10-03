@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a5349">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Poonam Study</title>
+<style>
+:root{--g:#0a5349;--g2:#0f7a6d;--g3:#d6e8e2;--bg:#f4f8f6;--card:#fff;--ink:#122e2a;--mute:#5b706b;--or:#d9822b;--or2:#fdf1e3;--red:#c0392b;--red2:#fdecea;--ok:#1e8449;--ok2:#e7f6ec;--line:#cdd6d1}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Devanagari","Nirmala UI",system-ui,sans-serif;font-size:17px;line-height:1.6}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:0 14px 110px}
+header{background:var(--g);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:5;box-shadow:0 2px 8px #0003}
+header .row{max-width:720px;margin:0 auto;display:flex;align-items:center;gap:10px}
+header h1{font-size:19px;margin:0;flex:1;line-height:1.3}
+header small{display:block;font-weight:400;opacity:.85;font-size:13px}
+.back{background:#ffffff22;border:0;color:#fff;border-radius:10px;padding:6px 12px;font-size:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:14px 0}
+.big{background:var(--or2);border-left:6px solid var(--or);padding:10px 14px;font-weight:700;border-radius:10px}
+.btn{display:inline-block;background:var(--g);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:700;font-size:17px;text-decoration:none}
+.btn.alt{background:#fff;color:var(--g);border:2px solid var(--g)}
+.btn.full{display:block;width:100%;text-align:center}
+.upload{display:block;text-align:center;padding:22px;border:3px dashed var(--g2);border-radius:16px;background:#fff;color:var(--g);font-weight:700;font-size:19px;margin:16px 0}
+.upload input{display:none}
+.chap{display:flex;gap:12px;align-items:center;cursor:pointer}
+.chap .ic{font-size:30px}
+.chap b{display:block;line-height:1.35}
+.chap small{color:var(--mute)}
+.pill{display:inline-block;font-size:13px;padding:2px 9px;border-radius:20px;background:var(--g3);color:var(--g);margin:3px 4px 0 0;font-weight:700}
+.pill.ok{background:var(--ok2);color:var(--ok)}.pill.bad{background:var(--red2);color:var(--red)}.pill.no{background:#eee;color:#777}
+.tabs{display:flex;position:sticky;top:62px;z-index:4;background:var(--bg);padding:10px 0 6px;gap:6px}
+.tabs button{flex:1;min-width:0;border-radius:12px;padding:6px 1px;background:#fff;color:var(--g);font-weight:700;font-size:13px;line-height:1.25;border:1px solid var(--line)}
+.tabs button i{display:block;font-style:normal;font-size:19px}
+.donebtn{display:block;width:100%;margin-top:10px;border:2px solid var(--ok);background:#fff;color:var(--ok);border-radius:12px;padding:10px;font-weight:700;font-size:16px}
+.donebtn.on{background:var(--ok);color:#fff}
+.bigbar{height:16px;background:var(--g3);border-radius:10px;overflow:hidden;margin:8px 0}.bigbar i{display:block;height:100%;background:var(--ok)}
+.ptable{width:100%;border-collapse:collapse;font-size:15px}.ptable td,.ptable th{padding:8px 4px;border-bottom:1px solid var(--line);text-align:center}.ptable td:first-child,.ptable th:first-child{text-align:left}
+.next{background:var(--ok2);border:2px solid var(--ok)}
+.tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:4px 0 8px}
+.chips button{flex:none;border:1px solid var(--line);background:#fff;border-radius:20px;padding:6px 14px;font-weight:700;color:var(--g)}
+.chips button.on{background:var(--g2);color:#fff;border-color:var(--g2)}
+audio{width:100%;margin-top:8px}
+.speed button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;margin:6px 4px 0 0;font-weight:700;color:var(--g)}
+.speed button.on{background:var(--g2);color:#fff}
+.read h1{font-size:21px;color:var(--g);line-height:1.35;margin:4px 0 8px}
+.read h2{font-size:18px;color:var(--g);border-bottom:2px solid var(--g3);margin:20px 0 8px}
+.read .box{border:1px solid var(--line);border-radius:12px;padding:8px 14px;margin:12px 0;background:#fff}
+.read .ex{border-left:6px solid var(--g2)}.read .tag{font-weight:700;color:var(--g)}
+.read table{width:100%;border-collapse:collapse;font-size:15px;background:#fff}
+.read td,.read th{border:1px solid var(--line);padding:6px;vertical-align:top}.read th{background:var(--g3)}
+.read .diag{text-align:center;margin:14px 0;background:#fff;border-radius:12px;padding:8px}
+.read svg{max-width:100%;height:auto}
+.read .eng{font-family:Arial,sans-serif}.read .ans{color:var(--g)}
+.read .top{background:var(--g);color:#fff;padding:12px 14px;border-radius:12px}.read .top h1{color:#fff}
+.tablewrap{overflow-x:auto}
+.fs{display:flex;gap:8px;justify-content:flex-end}
+.fs button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:2px 12px;font-weight:700}
+.test{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.test b{display:block;line-height:1.35}
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:12px 0}
+.q .qt{font-weight:700;margin-bottom:8px;font-family:Arial,sans-serif}
+.q .qn{color:var(--mute);font-size:14px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;margin:7px 0;font-family:Arial,sans-serif;font-size:16px;color:var(--ink)}
+.opt .l{display:inline-block;width:26px;height:26px;line-height:24px;text-align:center;border-radius:50%;border:2px solid var(--g2);margin-right:8px;font-weight:700;color:var(--g2);font-size:14px}
+.opt.sel{border-color:var(--g2);background:#e6f4f1}.opt.sel .l{background:var(--g2);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--ok2)}.opt.right .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--red2)}.opt.wrong .l{background:var(--red);border-color:var(--red);color:#fff}
+.why{background:var(--or2);border-radius:10px;padding:8px 12px;margin-top:6px;font-size:15px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));z-index:6;box-shadow:0 -2px 10px #0002}
+.bar .in{max-width:720px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.bar .cnt{flex:1;font-weight:700;color:var(--g)}
+.prog{height:8px;background:var(--g3);border-radius:8px;overflow:hidden;margin-top:4px}.prog i{display:block;height:100%;background:var(--g2)}
+.score{text-align:center;padding:18px}
+.score .n{font-size:46px;font-weight:800;line-height:1.1}
+.score .n.good{color:var(--ok)}.score .n.mid{color:var(--or)}.score .n.low{color:var(--red)}
+.muted{color:var(--mute);font-size:14px}
+.vid a{color:var(--g);font-weight:700}
+.empty{text-align:center;color:var(--mute);padding:20px 10px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#122e2a;color:#fff;padding:10px 18px;border-radius:12px;z-index:9;max-width:90%;text-align:center}
+.del{background:none;border:0;color:var(--red);font-size:14px;text-decoration:underline;padding:4px 0}
+</style>
+</head>
+<body>
+<header><div class="row"><button class="back" id="backBtn" hidden>←</button><h1 id="hTitle">📚 Poonam's Study<small>Amity MBA · Hospital Management</small></h1></div></header>
+<div class="wrap" id="main"></div>
+<div class="bar" id="bar" hidden></div>
+
+<script>
+"use strict";
+// ---------- tiny helpers ----------
+const $ = s => document.querySelector(s);
+const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const L = "ABCDEFGH";
+function toast(msg, ms = 2600) { const d = document.createElement("div"); d.className = "toast"; d.textContent = msg; document.body.appendChild(d); setTimeout(() => d.remove(), ms); }
+function ls(key, val) { try { if (val === undefined) return JSON.parse(localStorage.getItem(key) || "null"); localStorage.setItem(key, JSON.stringify(val)); } catch (e) { return null; } }
+
+// ---------- storage of chapter files (IndexedDB, stays on the phone) ----------
+let dbp = null;
+function db() {
+  if (!dbp) dbp = new Promise((ok, bad) => {
+    const r = indexedDB.open("poonam-mba-app", 1);
+    r.onupgradeneeded = () => r.result.createObjectStore("packs", { keyPath: "id" });
+    r.onsuccess = () => ok(r.result); r.onerror = () => bad(r.error);
+  });
+  return dbp;
+}
+async function tx(mode, fn) { const d = await db(); return new Promise((ok, bad) => { const t = d.transaction("packs", mode); const s = t.objectStore("packs"); const r = fn(s); t.oncomplete = () => ok(r && r.result); t.onerror = () => bad(t.error); }); }
+const savePack = p => tx("readwrite", s => s.put(p));
+const getPack = id => tx("readonly", s => s.get(id));
+const allPacks = () => tx("readonly", s => s.getAll());
+const delPack = id => tx("readwrite", s => s.delete(id));
+
+// ---------- results ----------
+const rKey = (id, t) => `pmba:res:${id}:${t}`;
+function results(id, t) { return ls(rKey(id, t)) || []; }
+function best(id, t) { const r = results(id, t); return r.length ? Math.max(...r.map(x => Math.round(100 * x.score / x.total))) : null; }
+function pillFor(id, t) { const b = best(id, t); if (b === null) return '<span class="pill no">not taken</span>'; return b >= PASS ? `<span class="pill ok">✅ passed · best ${b}%</span>` : `<span class="pill bad">retry · best ${b}% (need ${PASS}%)</span>`; }
+
+const PASS = 60;   // a test counts as done at 60% or more
+function passed(id, t) { const b = best(id, t); return b !== null && b >= PASS; }
+const dKey = (id, kind, n) => `pmba:done:${id}:${kind}:${n}`;
+function isDone(id, kind, n) { return !!ls(dKey(id, kind, n)); }
+function setDone(id, kind, n, v) { try { if (v) ls(dKey(id, kind, n), localDate()); else localStorage.removeItem(dKey(id, kind, n)); } catch (e) {} }
+// Every step of a chapter: Listen + Read + Test for each part, then the Final test.
+function steps(p) {
+  const s = [];
+  for (const x of p.parts) {
+    s.push({ n: x.n, kind: "listen", label: `Part ${x.n} · Listen`, done: isDone(p.id, "listen", x.n), tab: "audio" });
+    s.push({ n: x.n, kind: "read", label: `Part ${x.n} · Read`, done: isDone(p.id, "read", x.n), tab: "read" });
+    s.push({ n: x.n, kind: "test", label: `Part ${x.n} · Test`, done: passed(p.id, "p" + x.n), quiz: "p" + x.n });
+  }
+  s.push({ kind: "final", label: "Final test", done: passed(p.id, "final"), quiz: "final" });
+  return s;
+}
+function progressPc(p) { const s = steps(p); return Math.round(100 * s.filter(x => x.done).length / s.length); }
+function doneBtn(p, kind, n, text) { const on = isDone(p.id, kind, n); return `<button class="donebtn ${on ? "on" : ""}" data-done="${kind}:${n}">${on ? "✅ Done — " + text : "☐ Mark as done — " + text}</button>`; }
+
+// ---------- navigation ----------
+let state = { view: "home" };
+function go(s) { state = s; history.pushState(s, ""); render(); window.scrollTo(0, 0); }
+window.addEventListener("popstate", e => { if (state.view === "quiz" && !state.done && state.answers.some(a => a !== null) && !confirm("Leave the test in the middle? Your answers will be lost.")) { history.pushState(state, ""); return; } state = e.state || { view: "home" }; render(); });
+$("#backBtn").onclick = () => history.back();
+
+let blobCache = {};
+async function render() {
+  const bar = $("#bar"); bar.hidden = true; bar.innerHTML = "";
+  stopAudios();
+  if (state.view === "home") return renderHome();
+  const p = await getPack(state.id);
+  if (!p) { state = { view: "home" }; return renderHome(); }
+  $("#backBtn").hidden = false;
+  if (state.view === "chapter") return renderChapter(p);
+  if (state.view === "quiz") return renderQuiz(p);
+}
+function setHeader(title, sub, back) { $("#hTitle").innerHTML = `${esc(title)}<small>${esc(sub)}</small>`; $("#backBtn").hidden = !back; }
+function stopAudios() { document.querySelectorAll("audio").forEach(a => a.pause()); }
+
+// ---------- HOME ----------
+async function renderHome() {
+  setHeader("📚 Poonam's Study", "Amity MBA · Hospital Management", false);
+  const packs = (await allPacks()).sort((a, b) => (a.subject + a.id).localeCompare(b.subject + b.id));
+  let h = `<label class="upload">➕ Add new chapter file<br><span class="muted" style="font-weight:400">Choose the “03 APP FILE …json” from WhatsApp</span><input type="file" id="file"></label>`;
+  if (!packs.length) h += `<div class="empty">No chapter yet.<br>Tap the button above to add a file 🙂</div>`;
+  for (const p of packs) {
+    const pc = progressPc(p);
+    h += `<div class="card"><div class="chap" data-open="${esc(p.id)}"><div class="ic">${icon(p.subject)}</div><div style="flex:1"><b>${esc(p.subject)} · ${esc(p.label)}</b>${esc(p.title)}<div class="bigbar" style="height:10px"><i style="width:${pc}%"></i></div><small>Progress: ${pc}%${pc === 100 ? " 🎉 complete" : ""}</small></div><div style="font-size:24px;color:var(--g)">›</div></div></div>`;
+  }
+  if (packs.length) h += `<button class="btn alt full" id="expAll">📥 Download / share ALL results</button>`;
+  if (packs.length) h += `<p class="muted" style="text-align:center">Chapters are saved on this phone and work without internet. Internet is needed only for videos.</p>`;
+  $("#main").innerHTML = h;
+  $("#file").onchange = e => loadFile(e.target.files[0]);
+  const ea = $("#expAll"); if (ea) ea.onclick = () => exportResults(null);
+  document.querySelectorAll("[data-open]").forEach(el => el.onclick = () => go({ view: "chapter", id: el.dataset.open, tab: "prog", part: 1 }));
+}
+function icon(s) { s = (s || "").toLowerCase(); return s.startsWith("acc") ? "🧮" : s.startsWith("comm") ? "🗣️" : s.startsWith("mark") ? "🛒" : s.startsWith("econ") ? "📈" : s.startsWith("hosp") || s.startsWith("health") ? "🏥" : "📘"; }
+
+async function loadFile(f) {
+  if (!f) return;
+  toast("Opening file… ⏳", 4000);
+  try {
+    const p = JSON.parse(await f.text());
+    if (p.app !== "poonam-mba-pack" || !p.id || !Array.isArray(p.parts)) throw new Error("not a pack");
+    const old = await getPack(p.id);
+    await savePack(p);
+    try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) {}
+    toast(old ? "✅ Chapter updated (old scores are safe)" : "✅ Chapter added!");
+    go({ view: "chapter", id: p.id, tab: "prog", part: 1 });
+  } catch (e) {
+    toast("❌ This is not a chapter file. Choose the “03 APP FILE … .json” from WhatsApp.", 5000);
+  }
+}
+
+// ---------- CHAPTER ----------
+async function renderChapter(p) {
+  setHeader(`${p.subject} · ${p.label}`, p.title, true);
+  const tabs = [["prog", "📊", "Progress"], ["audio", "🎧", "Listen"], ["read", "📖", "Read"], ["test", "✍️", "Test"], ["video", "▶️", "Video"]];
+  let h = `<div class="tabs">${tabs.map(([k, ic, t]) => `<button data-tab="${k}" class="${state.tab === k ? "on" : ""}"><i>${ic}</i>${t}</button>`).join("")}</div>`;
+  if (state.tab === "prog") h += progTab(p);
+  if (state.tab === "audio") h += audioTab(p);
+  if (state.tab === "read") h += readTab(p);
+  if (state.tab === "test") h += testTab(p);
+  if (state.tab === "video") h += videoTab(p);
+  $("#main").innerHTML = h;
+  document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { state.tab = b.dataset.tab; history.replaceState(state, ""); renderChapter(p); window.scrollTo(0, 0); });
+  document.querySelectorAll("[data-part]").forEach(b => b.onclick = () => { state.part = +b.dataset.part; history.replaceState(state, ""); renderChapter(p); window.scrollTo(0, 0); });
+  document.querySelectorAll("[data-quiz]").forEach(b => b.onclick = () => startQuiz(p, b.dataset.quiz));
+  document.querySelectorAll("[data-fs]").forEach(b => b.onclick = () => { const v = Math.min(24, Math.max(14, (ls("pmba:fs") || 17) + (+b.dataset.fs))); ls("pmba:fs", v); $(".read").style.fontSize = v + "px"; });
+  document.querySelectorAll("[data-done]").forEach(b => b.onclick = () => {
+    const [kind, n] = b.dataset.done.split(":"), was = isDone(p.id, kind, +n);
+    setDone(p.id, kind, +n, !was);
+    toast(was ? "Marked as not done" : `✅ Done! Chapter progress: ${progressPc(p)}%`);
+    const y = window.scrollY; renderChapter(p).then(() => window.scrollTo(0, y));
+  });
+  document.querySelectorAll("[data-goto]").forEach(b => b.onclick = () => { const [tab, n] = b.dataset.goto.split(":"); state.tab = tab; state.part = +n || 1; history.replaceState(state, ""); renderChapter(p); window.scrollTo(0, 0); });
+  if (state.tab === "audio") await wireAudio(p);
+  ["#expChap", "#expChap2"].forEach(id => { const ec = $(id); if (ec) ec.onclick = () => exportResults(p.id); });
+  const del = $("#delPack"); if (del) del.onclick = async () => { if (confirm("Remove this chapter from the phone? Scores will stay. (Tip: first send the results.)")) { await delPack(p.id); history.back(); } };
+}
+function partChips(p) { return `<div class="chips">${p.parts.map(x => `<button data-part="${x.n}" class="${state.part === x.n ? "on" : ""}">Part ${x.n}</button>`).join("")}</div>`; }
+
+function progTab(p) {
+  const s = steps(p), pc = progressPc(p), nd = s.filter(x => x.done).length;
+  const next = s.find(x => !x.done);
+  let h = `<div class="card"><b style="font-size:19px">Chapter progress: ${pc}%</b><div class="bigbar"><i style="width:${pc}%"></i></div><span class="muted">${nd} of ${s.length} steps done</span></div>`;
+  if (next) {
+    const btn = next.quiz ? `<button class="btn" data-quiz="${next.quiz}">Start test</button>` : `<button class="btn" data-goto="${next.tab}:${next.n}">Go</button>`;
+    const why = next.quiz && best(p.id, next.quiz) !== null ? `<br><span class="muted">Last best ${best(p.id, next.quiz)}% — you need ${PASS}% to pass.</span>` : "";
+    h += `<div class="card next test"><div><b>👉 Next step</b>${esc(next.label)}${why}</div>${btn}</div>`;
+  } else {
+    h += `<div class="card next" style="text-align:center"><b style="font-size:20px">🎉 Chapter complete!</b><br>Now send your results to Himanshu.</div>`;
+  }
+  const tick = d => d ? "✅" : "⬜";
+  h += `<div class="card"><table class="ptable"><tr><th>Part</th><th>Listen</th><th>Read</th><th>Test</th></tr>`;
+  for (const x of p.parts) {
+    const b = best(p.id, "p" + x.n);
+    h += `<tr><td><b>Part ${x.n}</b><br><span class="muted">${esc(x.title)}</span></td><td>${tick(isDone(p.id, "listen", x.n))}</td><td>${tick(isDone(p.id, "read", x.n))}</td><td>${b === null ? "⬜" : b >= PASS ? "✅<br><small>" + b + "%</small>" : "🔁<br><small>" + b + "%</small>"}</td></tr>`;
+  }
+  const bf = best(p.id, "final");
+  h += `<tr><td><b>🏆 Final test</b></td><td></td><td></td><td>${bf === null ? "⬜" : bf >= PASS ? "✅<br><small>" + bf + "%</small>" : "🔁<br><small>" + bf + "%</small>"}</td></tr></table>`;
+  h += `<p class="muted">Listen and Read: tap “Mark as done” when you finish. Tests: done automatically when you score ${PASS}% or more. Below ${PASS}%, take the test again (🔁).</p></div>`;
+  h += `<div class="card"><b>🗓️ How to study</b><br>Do one Part a day: 1) Listen 2) Read 3) Take the Part test. After all Parts, take the Final test. Then tap “Send chapter results”.</div>`;
+  h += `<button class="btn full" id="expChap" style="background:#25D366">📤 Send chapter results</button>`;
+  return h;
+}
+
+function audioTab(p) {
+  let h = `<div class="big">💡 ${esc(p.one_line)}</div>`;
+  for (const x of p.parts) {
+    h += `<div class="card"><b>Part ${x.n}: ${esc(x.title)}</b>`;
+    h += x.audio ? `<audio controls preload="none" data-audio="${x.n}"></audio><div class="speed" data-speedfor="${x.n}">${[1, 1.25, 1.5].map(s => `<button data-s="${s}">${s}x</button>`).join("")}</div>`
+                 : `<p class="muted">Audio for this part is not in the file yet.</p>`;
+    h += doneBtn(p, "listen", x.n, "I listened to Part " + x.n) + `</div>`;
+  }
+  h += `<p style="text-align:center"><button class="del" id="delPack">Remove this chapter from phone</button></p>`;
+  return h;
+}
+async function wireAudio(p) {
+  const sp = ls("pmba:speed") || 1;
+  for (const a of document.querySelectorAll("[data-audio]")) {
+    const n = +a.dataset.audio, key = p.id + ":" + n, part = p.parts.find(x => x.n === n);
+    if (!blobCache[key]) blobCache[key] = URL.createObjectURL(await (await fetch(part.audio)).blob());
+    a.src = blobCache[key];
+    const pos = ls("pmba:pos:" + key);
+    a.addEventListener("loadedmetadata", () => { if (pos && pos < a.duration - 5) a.currentTime = pos; a.playbackRate = ls("pmba:speed") || 1; }, { once: true });
+    a.addEventListener("timeupdate", () => { if (Math.round(a.currentTime) % 5 === 0) ls("pmba:pos:" + key, a.currentTime); });
+    a.addEventListener("play", () => { document.querySelectorAll("audio").forEach(o => { if (o !== a) o.pause(); }); a.playbackRate = ls("pmba:speed") || 1; });
+  }
+  document.querySelectorAll("[data-speedfor]").forEach(box => {
+    box.querySelectorAll("button").forEach(b => {
+      if (+b.dataset.s === sp) b.classList.add("on");
+      b.onclick = () => { ls("pmba:speed", +b.dataset.s); document.querySelectorAll(".speed button").forEach(x => x.classList.toggle("on", +x.dataset.s === +b.dataset.s)); document.querySelectorAll("audio").forEach(a => a.playbackRate = +b.dataset.s); };
+    });
+  });
+}
+
+function readTab(p) {
+  const x = p.parts.find(y => y.n === state.part) || p.parts[0];
+  const html = x.html.replace(/<table/g, '<div class="tablewrap"><table').replace(/<\/table>/g, "</table></div>");
+  const nav = `<div style="display:flex;gap:10px;margin:18px 0">${x.n > 1 ? `<button class="btn alt" data-part="${x.n - 1}" style="flex:1">← Part ${x.n - 1}</button>` : ""}<button class="btn" data-quiz="p${x.n}" style="flex:1">✍️ Part ${x.n} test</button>${x.n < p.parts.length ? `<button class="btn alt" data-part="${x.n + 1}" style="flex:1">Part ${x.n + 1} →</button>` : ""}</div>`;
+  return partChips(p) + `<div class="fs"><button data-fs="-1">A−</button><button data-fs="1">A+</button></div><div class="read" style="font-size:${ls("pmba:fs") || 17}px">${html}</div>` + doneBtn(p, "read", x.n, "I finished reading Part " + x.n) + nav;
+}
+
+function testTab(p) {
+  let h = `<p class="muted">Questions are in English, like the exam. Answers show only after you press Submit. Pass mark: ${PASS}%.</p>`;
+  for (const x of p.parts) {
+    const r = results(p.id, "p" + x.n);
+    h += `<div class="card test"><div><b>Test ${x.n} — Part ${x.n}</b><span class="muted">${esc(x.title)}<br>${x.mcqs.length} questions · attempts: ${r.length}</span><br>${pillFor(p.id, "p" + x.n)}</div><button class="btn" data-quiz="p${x.n}">Start</button></div>`;
+  }
+  const r = results(p.id, "final");
+  h += `<div class="card test" style="border:2px solid var(--or)"><div><b>🏆 FINAL — whole chapter</b><span class="muted">${p.final_test.length} questions · attempts: ${r.length}</span><br>${pillFor(p.id, "final")}</div><button class="btn" style="background:var(--or)" data-quiz="final">Start</button></div>`;
+  h += `<div class="card" style="text-align:center"><b>Finished this chapter?</b><br><span class="muted">Send all results of this chapter to Himanshu in one file.</span><br><br><button class="btn full" id="expChap2" style="background:#25D366">📤 Send chapter results</button></div>`;
+  return h;
+}
+
+function videoTab(p) {
+  if (!p.videos || !p.videos.length) return `<div class="empty">No videos in this chapter.</div>`;
+  return `<p class="muted">Tap a link to open YouTube (needs internet).</p>` + p.videos.map(v => `<div class="card vid"><span class="pill">Part ${esc(v.part)}</span><span class="pill">${esc(v.language)}</span><br><a href="${esc(v.url)}" target="_blank" rel="noopener">▶️ ${esc(v.title)}</a><br><span class="muted">${esc(v.channel)}</span><br>${esc(v.why)}</div>`).join("");
+}
+
+// ---------- QUIZ ----------
+function startQuiz(p, t) {
+  const src = t === "final" ? p.final_test : p.parts.find(x => "p" + x.n === t).mcqs;
+  let order = src.map((_, i) => i);
+  if (results(p.id, t).length) order.sort(() => Math.random() - 0.5);   // re-take: new question order
+  go({ view: "quiz", id: p.id, t, order, answers: order.map(() => null), done: false, back: state.tab });
+}
+function quizInfo(p, t) {
+  if (t === "final") return { qs: p.final_test, name: `${p.result_name} FINAL`, title: "🏆 Final test — whole chapter" };
+  const x = p.parts.find(y => "p" + y.n === t);
+  return { qs: x.mcqs, name: `${p.result_name} Part ${x.n}`, title: `✍️ Test ${x.n} · Part ${x.n}`, part: x };
+}
+function renderQuiz(p) {
+  const { qs, name, title } = quizInfo(p, state.t);
+  setHeader(title, state.t === "final" ? `${p.subject} · ${p.label}` : quizInfo(p, state.t).part.title, true);
+  const qList = state.order.map(i => qs[i]);
+  let h = "";
+  if (state.done) {
+    const score = qList.reduce((s, q, k) => s + (state.answers[k] === q.answer ? 1 : 0), 0), pc = Math.round(100 * score / qList.length);
+    const cls = pc >= 80 ? "good" : pc >= 50 ? "mid" : "low";
+    const msg = pc >= 80 ? "Excellent! 🎉 Test passed." : pc >= PASS ? "Passed 👍 — check the wrong answers below." : `Below ${PASS}%, so this test is not done yet. Read the wrong answers below, revise this Part, then take the test again. You can do it! 💪`;
+    h += `<div class="card score"><div class="n ${cls}">${score}/${qList.length}</div><b>${pc}%</b><p>${msg}</p>
+          <button class="btn full" id="waBtn" style="background:#25D366">📤 Send result on WhatsApp</button><br>
+          <button class="btn alt full" id="again">🔁 Try again</button></div><h3 style="color:var(--g)">Check your answers 👇</h3>`;
+  } else {
+    h += `<p class="muted">Choose one option for each question. Press <b>Submit</b> at the bottom when done.</p>`;
+  }
+  qList.forEach((q, k) => {
+    const a = state.answers[k];
+    h += `<div class="q" id="q${k}"><div class="qn">Q${k + 1} of ${qList.length}</div><div class="qt">${esc(q.q)}</div>`;
+    q.options.forEach((o, j) => {
+      let c = "";
+      if (state.done) { if (j === q.answer) c = "right"; else if (j === a) c = "wrong"; }
+      else if (j === a) c = "sel";
+      h += `<button class="opt ${c}" data-k="${k}" data-j="${j}" ${state.done ? "disabled" : ""}><span class="l">${L[j]}</span>${esc(o)}</button>`;
+    });
+    if (state.done) h += `<div class="why">${a === q.answer ? "✅ Correct" : a === null ? "⚪ Skipped — answer: " + L[q.answer] : "❌ Wrong — answer: " + L[q.answer]} · ${esc(q.why)}</div>`;
+    h += `</div>`;
+  });
+  if (state.done) h += `<button class="btn full" id="toTests" style="margin-top:12px">← All tests</button>`;
+  $("#main").innerHTML = h;
+  if (!state.done) {
+    document.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+      const k = +b.dataset.k; state.answers[k] = +b.dataset.j; history.replaceState(state, "");
+      document.querySelectorAll(`.opt[data-k="${k}"]`).forEach(o => o.classList.toggle("sel", o === b));
+      updateBar(qList.length);
+    });
+    updateBar(qList.length);
+  } else {
+    $("#again").onclick = () => { history.back(); setTimeout(() => startQuiz(p, state.t), 60); };
+    $("#toTests").onclick = () => history.back();
+    $("#waBtn").onclick = () => {
+      const line = resultLine(p, qList, name);
+      window.open("https://wa.me/?text=" + encodeURIComponent(line), "_blank");
+    };
+  }
+}
+function updateBar(n) {
+  const done = state.answers.filter(a => a !== null).length, bar = $("#bar");
+  bar.hidden = false;
+  bar.innerHTML = `<div class="in"><div class="cnt">Answered: ${done}/${n}<div class="prog"><i style="width:${100 * done / n}%"></i></div></div><button class="btn" id="submit">Submit ✔</button></div>`;
+  $("#submit").onclick = () => submitQuiz(n - done);
+}
+async function submitQuiz(left) {
+  if (left > 0 && !confirm(`${left} questions are not answered yet. Submit anyway?`)) {
+    const k = state.answers.findIndex(a => a === null); const el = document.getElementById("q" + k); if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  const p = await getPack(state.id);
+  const { qs } = quizInfo(p, state.t);
+  const qList = state.order.map(i => qs[i]);
+  const score = qList.reduce((s, q, k) => s + (state.answers[k] === q.answer ? 1 : 0), 0);
+  const wrong = [];
+  qList.forEach((q, k) => { const a = state.answers[k]; if (a !== q.answer) wrong.push({ n: state.order[k] + 1, q: q.q, chose: a === null ? "skipped" : L[a] + ") " + q.options[a], correct: L[q.answer] + ") " + q.options[q.answer] }); });
+  const r = results(p.id, state.t); r.push({ date: localDate(), score, total: qList.length, wrong }); ls(rKey(p.id, state.t), r);
+  state.done = true; history.replaceState(state, ""); render(); window.scrollTo(0, 0);
+}
+function localDate() { const d = new Date(), z = n => String(n).padStart(2, "0"); return `${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())} ${z(d.getHours())}:${z(d.getMinutes())}`; }
+
+// One text file with every chapter, every test, every attempt, and the wrong questions of the latest attempt.
+async function exportResults(onlyId) {
+  const packs = (await allPacks()).filter(p => !onlyId || p.id === onlyId);
+  const out = [`POONAM STUDY APP — RESULTS FILE`, `Made: ${localDate()}`, `Chapters: ${packs.length}`, ""];
+  const summary = [];
+  for (const p of packs) {
+    out.push("=".repeat(50), `${p.subject} · ${p.label} — ${p.title}`, `(chapter file made ${p.made || "?"})`, "=".repeat(50));
+    out.push(`Progress: ${progressPc(p)}%  (pass mark for tests: ${PASS}%)`);
+    steps(p).forEach(x => out.push(`   ${x.done ? "[done]" : "[ -- ]"} ${x.label}${x.kind === "listen" || x.kind === "read" ? (x.done ? " — marked " + ls(dKey(p.id, x.kind, x.n)) : "") : ""}`));
+    summary.push(`PROGRESS>> ${p.result_name} | ${progressPc(p)}% | not done: ${steps(p).filter(x => !x.done).map(x => x.label).join(", ") || "none"}`);
+    const tests = p.parts.map(x => ({ t: "p" + x.n, name: `${p.result_name} Part ${x.n}`, title: `Test ${x.n} — ${x.title}` })).concat([{ t: "final", name: `${p.result_name} FINAL`, title: "FINAL — whole chapter" }]);
+    for (const T of tests) {
+      const r = results(p.id, T.t);
+      out.push("", `## ${T.title}`);
+      if (!r.length) { out.push("   not attempted yet"); summary.push(`RESULT>> ${T.name} | not attempted`); continue; }
+      r.forEach((a, i) => out.push(`   attempt ${i + 1}: ${a.date} — ${a.score}/${a.total} (${Math.round(100 * a.score / a.total)}%)`));
+      const last = r[r.length - 1], bestPc = Math.max(...r.map(a => Math.round(100 * a.score / a.total)));
+      summary.push(`RESULT>> ${T.name} | MCQ ${last.score}/${last.total} (latest), best ${bestPc}% ${bestPc >= PASS ? "PASSED" : "NOT PASSED"}, attempts ${r.length} | wrong: ${last.wrong ? (last.wrong.map(w => "Q" + w.n).join(",") || "none") : "not recorded"}`);
+      if (last.wrong && last.wrong.length) {
+        out.push(`   Wrong in latest attempt (${last.wrong.length}):`);
+        last.wrong.forEach(w => out.push(`   - Q${w.n}: ${w.q}`, `       chose: ${w.chose}`, `       correct: ${w.correct}`));
+      }
+    }
+    out.push("");
+  }
+  const text = ["SUMMARY (paste these lines to Claude):", ...summary, "", ...out].join("\n");
+  const fname = `Poonam results ${localDate().slice(0, 10)}${onlyId ? " " + onlyId : ""}.txt`;
+  const file = new File([text], fname, { type: "text/plain" });
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: fname }); return; }
+  } catch (e) { if (e && e.name === "AbortError") return; }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(file); a.download = fname; document.body.appendChild(a); a.click(); a.remove();
+  toast("📥 Results file saved in Downloads. Send it to Himanshu on WhatsApp.", 4500);
+}
+
+function resultLine(p, qList, name) {
+  const score = qList.reduce((s, q, k) => s + (state.answers[k] === q.answer ? 1 : 0), 0);
+  const wrong = [];
+  // "Q" numbers are the question's number inside the chapter file (same for every attempt), so mistakes can be traced back.
+  qList.forEach((q, k) => { if (state.answers[k] !== q.answer) { const m = q.q.match(/^\[([\d.]+)\]/); wrong.push({ tag: m && m[1], n: state.order[k] + 1 }); } });
+  const tags = [...new Set(wrong.map(w => w.tag).filter(Boolean))];
+  const nums = wrong.map(w => w.n).sort((a, b) => a - b).map(n => "Q" + n).join(",");
+  const weak = !wrong.length ? "none" : (tags.length ? "topics " + tags.join(", ") + " · " : "") + nums;
+  return `RESULT>> ${name} | MCQ ${score}/${qList.length} | weak: ${weak} | (app)`;
+}
+
+history.replaceState(state, "");
+render();
+</script>
+</body>
+</html>
